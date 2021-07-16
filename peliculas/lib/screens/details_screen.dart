@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   @override
@@ -10,7 +11,15 @@ class DetailsScreen extends StatelessWidget {
         body: CustomScrollView(
       slivers: [
         _CustomAppBar(),
-        SliverList(delegate: SliverChildListDelegate([_PosterAndTitle()]))
+        SliverList(delegate: SliverChildListDelegate([
+          _PosterAndTitle(), 
+          _Overview(), 
+          _Overview(), 
+          _Overview(),
+          CastingCards() 
+        ]
+        )
+        )
       ],
     ));
   }
@@ -29,6 +38,7 @@ class _CustomAppBar extends StatelessWidget {
         titlePadding: const EdgeInsets.all(0),
         title: Container(
             alignment: Alignment.bottomCenter,
+            padding: const EdgeInsets.only(bottom: 10),
             color: Colors.black12,
             width: double.infinity,
             child: const Text(
@@ -93,6 +103,22 @@ class _PosterAndTitle extends StatelessWidget {
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+
+class _Overview extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric( horizontal: 30, vertical: 10),
+      child: Text(
+        'Ea amet ullamco ad sint cupidatat do amet est magna. Occaecat reprehenderit magna excepteur fugiat laborum culpa ad occaecat aliquip fugiat eiusmod esse mollit esse.',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.subtitle1,
       ),
     );
   }
